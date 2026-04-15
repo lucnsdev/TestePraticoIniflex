@@ -6,7 +6,11 @@ Todos os requisitos são atendidos.
 <br>
 Os funcionários são lidos na tabela ```src/resources/employees.csv``` e inseridos na ```List<Employee>```.
 <br>
-
+```Employee``` e ```People``` são classes modelos.
+<br>
+```Enterprise``` é a classe que gerencia as classes modelos e consequentemente manipula os dados dos modelos. Isso torna o código organizado e de facil compreendimento em relação ao fluxo de funcionamento.
+<br>
+<br>
 ```java
 public class Main {
 
