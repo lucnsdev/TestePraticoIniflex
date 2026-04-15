@@ -3,6 +3,8 @@
 Basta Executar o com.lucas/Main.java
 <br>
 Todos os requisitos são atendidos.
+<br>
+Os funcionários são lidos do ```src/resources/employees.csv``` e inseridos na ```List<Employee>```.
 
 ```java
 public class Main {
