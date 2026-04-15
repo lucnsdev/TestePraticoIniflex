@@ -3,6 +3,8 @@ package com.lucas.core;
 import com.lucas.models.Employee;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
@@ -49,11 +51,11 @@ public class MyProgram {
     }
 
     public void addictPercentageToWages(int percentage) {
+        System.out.println("\n");
         System.out.println("Adicionando " + percentage + "% aos salários.");
         BigDecimal multiple = new BigDecimal((100 + percentage) / 100.0d);
         List<Employee> employees = enterprise.getAllEmployees();
         for (Employee employee : employees) {
-
             BigDecimal oldWage = employee.getWage();
             BigDecimal newWage = oldWage.multiply(multiple);
             employee.setWage(newWage);
@@ -79,7 +81,7 @@ public class MyProgram {
             builder.append(month);
         }
         System.out.println("\n\n");
-        System.out.println(" Funcionários fazem aniversário nos meses de " + builder);
+        System.out.println(" Funcionários que fazem aniversário nos meses de " + builder);
         System.out.println("-------------------------------------------------------------");
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -95,6 +97,7 @@ public class MyProgram {
     }
 
     public void showOlderEmployee() {
+        System.out.println("\n");
         List<Employee> employees = enterprise.getAllEmployees();
         Collections.sort(employees, new Comparator<Employee>() {
             @Override
@@ -105,7 +108,49 @@ public class MyProgram {
         Employee older = employees.getFirst();
         LocalDate now = LocalDate.now();
         Period age = Period.between(older.getBirthDate(), now);
+        System.out.println("-------------------------------------------------------------");
         System.out.println("Funcionário mais velho");
         System.out.println(older.getName() + " | Idade: " + age.getYears() + " Anos, " + age.getMonths() + " Meses e " + age.getDays() + " dias.");
+        System.out.println("-------------------------------------------------------------");
+    }
+
+    public void showInAlphabeticallyOrder() {
+        List<Employee> employees = enterprise.getAllEmployees();
+        Collections.sort(employees, new Comparator<Employee>() {
+            @Override
+            public int compare(Employee o1, Employee o2) {
+                return o1.getName().compareTo(o2.getName());
+            }
+        });
+        System.out.println("\n");
+        showAllListEmployees("EM ORDEM ALFABETICA");
+    }
+
+    public void showTotalWages() {
+        System.out.println("\n");
+        List<Employee> employees = enterprise.getAllEmployees();
+        BigDecimal sum = BigDecimal.ZERO;
+        for (Employee employee : employees) {
+            sum = sum.add(employee.getWage());
+        }
+
+        DecimalFormat df = new DecimalFormat("#,##0.00");
+        System.out.println("-------------------------------------------------------------");
+        System.out.println("Total da soma dos salários: " + df.format(sum));
+        System.out.println("-------------------------------------------------------------");
+    }
+
+    public void showMinimalWagesPerEmployee() {
+        System.out.println("\n");
+        System.out.println("-------------------------------------------------------------");
+        System.out.println("Lista de funcionarios e seus ganhos em salários");
+        System.out.println("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+        DecimalFormat df = new DecimalFormat("#,##0.00");
+        List<Employee> employees = enterprise.getAllEmployees();
+        for (Employee employee : employees) {
+            BigDecimal wages = employee.getWage().divide(new BigDecimal("1212.0"), RoundingMode.DOWN);
+            System.out.println(employee.getName() + " | Ganha " + df.format(wages) + " salários");
+        }
+        System.out.println("-------------------------------------------------------------");
     }
 }
