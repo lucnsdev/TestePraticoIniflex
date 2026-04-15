@@ -1,3 +1,3 @@
 # Teste Pratico - Iniflex
 
-Basta Executar o Main.java
+Basta Executar o com.lucas/Main.java
