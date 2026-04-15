@@ -4,7 +4,7 @@ Basta Executar o com.lucas/Main.java
 <br>
 Todos os requisitos são atendidos.
 
-```
+```java
 public class Main {
 
     public static void main(String[] args) {
