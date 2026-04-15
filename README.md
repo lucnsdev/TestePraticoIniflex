@@ -1,12 +1,16 @@
 # Teste Pratico - Iniflex
-
+Desenvolvido no IntelliJ IDEA
+<br>
+<br>
 Basta Executar o com.lucas/Main.java
 <br>
 Todos os requisitos são atendidos.
 <br>
 Os funcionários são lidos na tabela ```src/resources/employees.csv``` e inseridos na ```List<Employee>```.
 <br>
+<br>
 ```Employee``` e ```People``` são classes modelos.
+<br>
 <br>
 ```Enterprise``` é a classe que gerencia as classes modelos e consequentemente manipula os dados dos modelos. Isso torna o código organizado e de facil compreendimento em relação ao fluxo de funcionamento.
 <br>
