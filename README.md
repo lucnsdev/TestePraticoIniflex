@@ -2,7 +2,7 @@
 Desenvolvido no IntelliJ IDEA
 <br>
 <br>
-Basta Executar o com.lucas/Main.java
+Basta Executar o ```com.lucas/Main.java```
 <br>
 Todos os requisitos são atendidos.
 <br>
